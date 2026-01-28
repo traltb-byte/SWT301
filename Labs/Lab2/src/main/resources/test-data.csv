@@ -1,0 +1,24 @@
+-- Header
+username,password,email,expected
+-- Trường hợp hợp lệ cơ bản
+user01,Abc@1234,test@domain.com,true
+-- Username dưới 3 ký tự
+us,Abc@1234,test@domain.com,false
+-- Password thiếu ký tự hoa, thường và đặc biệt
+user_unique,123456,test@domain.com,false
+-- Password thiếu ký tự đặc biệt
+user_admin,Password123,test@domain.com,false
+-- Password thiếu ký tự hoa
+user_dev,pass@123,test@domain.com,false
+-- Password thiếu ký tự thường
+user_qa,PASS@123,test@domain.com,false
+-- Password từ 6 ký tự trở xuống (yêu cầu > 6)
+user_01,Abc@1,test@domain.com,false
+-- Email sai định dạng
+user_02,Abc@1234,invalid-email,false
+-- Lỗi trùng lặp username đã tồn tại
+user_duplicate,Abc@1234,test@domain.com,false
+-- Lỗi trùng lặp email đã tồn tại
+user_04,Abc@1234,existing@domain.com,false
+-- Mật khẩu để trống
+null_user,,email@domain.com,false
